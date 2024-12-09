@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>הרשמה לאירוע Claude</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>הרשמה לאירוע Claude</h1>
+        <h2>יצירת אתרים - סדנה חינמית</h2>
+        
+        <p>תאריך: מחר</p>
+        <p>שעה: 21:00-21:45</p>
+
+        <form id="registrationForm">
+            <input type="text" placeholder="שם מלא" required>
+            <input type="email" placeholder="דוא״ל" required>
+            <input type="tel" placeholder="טלפון" required>
+            <button type="submit" class="btn">הירשם עכשיו</button>
+        </form>
+
+        <div>
+            <a href="https://waze.com" target="_blank" class="btn">נווט עם Waze</a>
+            <a href="#" class="btn" onclick="addToCalendar()">הוסף ליומן</a>
+        </div>
+    </div>
+
+    <script>
+        function addToCalendar() {
+            const event = {
+                'title': 'סדנת יצירת אתרים עם Claude',
+                'description': 'סדנה חינמית ליצירת אתרים',
+                'startTime': '2024-12-10T21:00:00',
+                'endTime': '2024-12-10T21:45:00'
+            };
+            
+            const googleCalendarUrl = 
+                `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.startTime}/${event.endTime}&details=${encodeURIComponent(event.description)}`;
+            
+            window.open(googleCalendarUrl, '_blank');
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('תודה על ההרשמה! נחזור אליך בהקדם.');
+        });
+    </script>
+</body>
+  </html>
